@@ -1,1 +1,13 @@
 
+A new implementation of the algorithm has been coded, in
+which a matrix of random variables has been generated, specifying
+the number of columns and rows. The initial conditions
+are the quantity of ”k” values selected, a variable ”r” that
+specifies a sample of number ”k” indexes in the dataset, and
+the initial centroids considering the ”r” indexes. To initialize
+the stopping criteria, two new variables ”diff” and ”cond” are
+created, the first indicates the difference between the new centroid
+and the previous centroid, the second indicates a counter
+for each iteration that is performed to calculate the new centroid.
+The algorithm finished when the updated ”diff” value differs
+from the initial value.
