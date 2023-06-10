@@ -1,0 +1,12 @@
+The implementation of the EM algorithm has been implemented
+with some modifications to the original code. First,
+the file ”2gaussiandata.RData” was loaded and a third vector
+was generated form the initial column vector. The variables
+mu1, mu2, sym1, and sym2 have the same values as in the
+2d implementation, however, the 2 covariance matrices were
+generated from a normal distribution, considering the initial
+values in the initial dataset.
+Dimensions of the vector ”logligk” were modified and the
+covariance matrices were recalculated with the corresponding
+values of tau1, tau2, mu1, mu2, the normalizers and the function
+”mysum”.
