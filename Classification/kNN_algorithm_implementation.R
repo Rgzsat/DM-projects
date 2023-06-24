@@ -7,7 +7,6 @@ library(scales)
 library(plyr)
 
 #loading and plotting data
-#load(file="/Users/svennomm/Google Drive/My Drive/Teaching/Data_Mining_2021/Practice_02/kdata.RData") #var x
 load(file="C:\\Users\\47406\\Downloads\\Data Mining course\\practice_02\\kdata.RData")
 
 #data plotting - visualization
