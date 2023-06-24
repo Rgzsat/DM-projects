@@ -16,7 +16,7 @@ Figure 2: Initial plot for the EM-algorithm in 3D.
 Figure 3: Final plot for the EM-algorithm in 3D.
 
 # K-Nearest Neighbor
-![knn](https://github.com/Rgzsat/DM-projects/assets/87973999/9b908bb6-cec4-4ab8-9b2b-84c847e8f081)
+<img width="924" alt="knn" src="https://github.com/Rgzsat/DM-projects/assets/87973999/1c1b5622-ca39-4d5a-881f-0e63fbd49df7">
 
 Figure 4: KNN implementation
 
