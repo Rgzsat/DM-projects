@@ -20,3 +20,10 @@ Figure 3: Final plot for the EM-algorithm in 3D.
 
 Figure 4: KNN implementation
 
+# Decision Tree
+![image](https://github.com/Rgzsat/DM-projects/assets/87973999/369b8b91-d86b-4e80-a719-e04a45a6a198)
+
+Figure 4: Diagram of the decision tree classifier
+
+
+
