@@ -1,1 +1,8 @@
-
+In this procedure, the implementation is divided into the next
+steps: 1) Implement the distance function, 2) The calculated
+distances are arranged in non-decreasing order for each respective
+feature, 3) Take the ”k” nearest neighbor distances from
+the sorted list, 4) Find the ”k” points of labels corresponding
+to the distances, 5) Assign the points to the closest neighbor,
+6) Compare the number of neighbors with the class label of the
+original vector to verify accuracy.
