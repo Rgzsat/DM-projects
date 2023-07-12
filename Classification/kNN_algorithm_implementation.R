@@ -7,7 +7,7 @@ library(scales)
 library(plyr)
 
 #loading and plotting data
-load(file="C:\\Users\\47406\\Downloads\\Data Mining course\\practice_02\\kdata.RData")
+load(file="C:\\Users\\47406\\Downloads\\kdata.RData")
 
 #data plotting - visualization
 plot(x[,1],x[,2], col=scales::alpha(x[,3],0.3), pch=20)
