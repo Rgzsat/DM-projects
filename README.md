@@ -25,5 +25,15 @@ Figure 4: KNN implementation
 
 Figure 4: Diagram of the decision tree classifier
 
+# Support Vector Machine (SVM)
+![image](https://github.com/Rgzsat/DM-projects/assets/87973999/9135cb6a-2009-4485-bede-28292242b74f)
+
+Figure 5: SVM- Linear Kernel
+
+![image](https://github.com/Rgzsat/DM-projects/assets/87973999/48e09c2e-cdc6-4cc1-b9dd-d6b3ce9b71b8)
+
+Figure 6: SVM- Radial Kernel
+
+
 
 
