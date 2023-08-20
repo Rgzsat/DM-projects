@@ -39,5 +39,7 @@ Figure 6: SVM- Radial Kernel
 
 Figure 6: Outliers results for the DBSCAN algorithm
 
+![image](https://github.com/Rgzsat/DM-projects/assets/87973999/cceb29f3-1ff7-4200-88c8-a8d762ab369a)
 
+Figure 7: Non-outliers results for DBSCAN algorithm
 
