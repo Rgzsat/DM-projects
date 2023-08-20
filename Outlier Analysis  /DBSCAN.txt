@@ -1,3 +1,14 @@
 Simple implementation of DBSCAN in R
 
-In this case, a pop function has been implemented in R, all this to remove specific items based on some conditions of the algorithm. Two functions were implemented to start, the first to calculate the distance using Euclidean methodology, and the second to determine the indexes based on the eps neighborhood. In the next step, the "unvisited" collection is implemented with set, the number of clusters is initialized in parallel with the eps and minimum of points. Finally, a "while loop" is initialized and the algorithm divides the data into several clusters, which may cause a reduction in the number of outliers. If the data volume of the cluster is less than a certain value, this cluster is considered as an outlier.
+In this case, a pop function has been implemented in R,
+all this to remove specific items based on some conditions of
+the algorithm. Two functions wereimplemented to start, the first
+to calculate the distance using Euclidean methodology, 
+and the second to determine the indexes based on the eps neighborhood. 
+In the next step, the ”unvisited” collection is implemented with set, the number of
+clusters is initialized in parallel with the eps and minimum of
+points. Finally, a ”while loop” is initialized and the algorithm
+finally divides the data into several clusters, which may cause a
+reduction in the number of clusters. If the data volume of the
+cluster is less than a certain value, this cluster is considered as
+an outlier.
