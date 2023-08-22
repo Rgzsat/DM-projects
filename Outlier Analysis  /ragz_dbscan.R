@@ -44,8 +44,8 @@ unvisited= as.list(c(seq(1,(nrow(data)))))
 mark= replicate(nrow(data), 0)
 num_cluster= 0 #Initialize the number of clusters
 i=0
-eps=2.5
-min_points=10
+eps=25 #Specify the eps
+min_points=10 #Specify the minimum points
 index= c(1:nrow(data))
 
 while (i!=length(unvisited)) {
@@ -95,7 +95,7 @@ scatter3d(x=data_mark[,1], y=data_mark[,2], z= data_mark[,3],
           surface =FALSE, grid =FALSE,
           axis.scales = FALSE, ellipsoid = FALSE)
 
-#PLOT THE CLUSTER
+#PLOT THE NON-OUTLIERS OR CLUSTERS
 cluster=0 # initialize the counter in 0, it gives the clusters in the dataset
 points= matrix(nrow = length(which(mark!=-1)), ncol = ncol(data), 0) #non-outliers
 min_cluster_size=2
