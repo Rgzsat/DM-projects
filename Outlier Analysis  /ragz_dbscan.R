@@ -4,7 +4,7 @@ library("readxl")
 library("car")
 library("rgl")
 
-#We create a pop function in R, which reference has been included in the report
+#We create a pop function in R
 pop <- function(list, i = length(list)) {
   stopifnot(inherits(list, "list"))
   res <- list[[i]]
@@ -76,7 +76,6 @@ while (i!=length(unvisited)) {
 
 mark
 num_cluster
-
 
 id_mark= which(mark==-1) #take the indexes of the outliers
 data_mark= data[id_mark,] #select the features by the indexes in the dataset
