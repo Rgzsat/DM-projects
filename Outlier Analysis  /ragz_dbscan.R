@@ -1,4 +1,4 @@
-install.packages("scatterplot3d") # Install
+install.packages("scatterplot3d") # Install 
 library("scatterplot3d") # load
 library("readxl")
 library("car")
@@ -120,6 +120,6 @@ s3d1=scatterplot3d(points, main="Clusters, eps=25, min points=10",
                    zlab = "M", pch = 16, color="steelblue")
 
 
-scatter3d(x=points[,1], y=points[,2], z= points[,3], point.col = "red",
+scatter3d(x=points[,1], y=points[,2], z= points[,3], point.col = "steelblue",
           surface =FALSE, grid =FALSE,
           axis.scales = FALSE, ellipsoid = FALSE)
