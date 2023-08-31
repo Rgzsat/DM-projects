@@ -1,0 +1,12 @@
+In this exercise, some lists were created to store the variables
+”Local reachability density”, ”Local Outlier Factor” and the
+”k neighbor index”. Four functions were created to implement
+the algorithm.
+The first calculate the distance function between a vector of
+features and a matrix, the second calculates the ”k nearest
+neighbor distances”, the third calculates the local reachability
+density, and the last function calculates the LOF value of each
+point according.
+The number of ”k” is an arbitrary parameter, as well as the
+threshold that is required to specify the LOF and classify the
+data points as outliers or non-outliers.
