@@ -1,1 +1,5 @@
+General description
 
+Real life  problem such whose solution requires to use at least three
+different data mining techniques (clustering, outlier and anomaly analysis,
+classification or regression, association pattern mining).
