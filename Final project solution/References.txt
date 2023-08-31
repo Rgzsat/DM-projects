@@ -1,0 +1,23 @@
+References
+[1] Accessed 5 January 2023. https://www.vertica.com/python/examples/battery/
+[2] Accessed 5 January 2023. https://rdrr.io/cran/naniar/
+[3] Accessed 7 January 2023. https://rstudio-pubs-static.s3.amazonaws.com/323416_ab58ad22d9e64ba2831569cf3d14a609.html
+[4] Accessed 9 January 2023. https://www.rdocumentation.org/packages/factoextra/versions/1.0.7/topics/eigenvalue
+[5] Accessed 9 January 2023. https://www.datacamp.com/tutorial/pca-analysis-r
+[6] Accessed 9 January 2023. https://stackoverflow.com/questions/20782583/how-to-convert-from-category-to-numeric-in-r
+[7] Accessed 9 January 2023. https://stackoverflow.com/questions/8161836/how-do-i-replace-na-values-with-zeros-in-an-r-dataframe 
+[8] Accessed 10 January 2023. https://iopscience.iop.org/article/10.1088/1755-1315/31/1/012012/pdf
+[9] Accessed 10 January 2023. https://cran.r-project.org/web/packages/KernelKnn/KernelKnn.pdf
+[10] Accessed 10 January 2023. https://www.dbs.ifi.lmu.de/Publikationen/Papers/KDD-96.final.frame.pdf
+[11] Accessed 10 January 2023. https://rdrr.io/cran/KernelKnn/man/knn.index.dist.html
+[12] Accessed 12 January 2023.https://www.dbs.ifi.lmu.de/Publikationen/Papers/LOF.pdf
+[13] Accessed 12 January 2023. https://www.tutorialspoint.com/how-to-select-random-elements-from-an-r-vector
+[14] Accessed 12 January 2023. https://stackoverflow.com/questions/3932038/plot-a-legend-outside-of-the-plotting-area-in-base-graphics
+[15] Accessed 12 January 2023. https://stackoverflow.com/questions/7806702/how-do-i-select-a-sample-of-rows-at-random-with-repetition-from-a-matrix-in-r
+[16] Accessed 12 January 2023. https://rpubs.com/muh_risman/LOF
+[17] Accessed 12 January 2023. https://cran.r-project.org/web/packages/dbscan/vignettes/dbscan.pdf
+[18] Accessed 13 January 2023. https://uc-r.github.io/kmeans_clustering
+[19] Accessed 13 January 2023. https://www.hrpub.org/download/20170830/WJCAT2-13708454.pdf
+[20] Accessed 13 January 2023https://www.researchgate.net/publication/230856452_Nearest-Neighbor_and_Clustering_based_Anomaly_Detection_Algorithms_for_RapidMiner
+[21]. Accessed 14 January 2023 https://uc-r.github.io/kmeans_clustering
+[22]. Accessed 14 January 2023 https://www.datanovia.com/en/lessons/determining-the-optimal-number-of-clusters-3-must-know-methods/
