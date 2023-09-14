@@ -43,3 +43,15 @@ Figure 6: Outliers results for the DBSCAN algorithm
 
 Figure 7: Non-outliers results for DBSCAN algorithm
 
+# Local Outlier Factor (LOF)
+
+![image](https://github.com/Rgzsat/DM-projects/assets/87973999/5161cbb1-2c3b-4c4a-a4b3-4e52c4f55d7c)
+
+Figure 8: Outliers results for the the LOF algorithm
+
+![image](https://github.com/Rgzsat/DM-projects/assets/87973999/3d13d8d4-2ca4-42fc-8654-c8100dfa2dfd)
+
+Figure 9: Non-outliers results for the LOF algorithm
+
+
+
