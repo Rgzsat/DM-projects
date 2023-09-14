@@ -112,7 +112,7 @@ library("car")
 library("rgl")
 
 
-## Plotting
+## Plotting outliers and non-outliers in 3D
 scatterplot3d(data_normal, main="Non-outliers, LOF>=12.5",
               xlab = "L",
               ylab = "F",
