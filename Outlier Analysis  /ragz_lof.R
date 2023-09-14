@@ -2,6 +2,9 @@ library("readxl")
 install.packages("scatterplot3d") # Install
 library("scatterplot3d") # load
 
+#data_p = read_excel('dataset')
+#data= as.matrix(data_p[,2:4])
+
 #Use to test or generate other data
 ro=180
 co=3
