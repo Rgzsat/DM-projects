@@ -83,10 +83,12 @@ data_mark= data[id_mark,] #select the features by the indexes in the dataset
 #################PLOT THE OUTLIERS
 
 s3d=scatterplot3d(data_mark,
-                  main="Outliers, eps=25, min points=10",
+                  main="Outliers, eps=35, min points=10",
                   xlab = "L",
                   ylab = "F",
                   zlab = "M", pch = 16, color="red")
+
+
 
 
 scatter3d(x=data_mark[,1], y=data_mark[,2], z= data_mark[,3], 
@@ -94,7 +96,7 @@ scatter3d(x=data_mark[,1], y=data_mark[,2], z= data_mark[,3],
           surface =FALSE, grid =FALSE,
           axis.scales = FALSE, ellipsoid = FALSE)
 
-#PLOT THE NON-OUTLIERS OR CLUSTERS
+#PLOT THE CLUSTER
 cluster=0 # initialize the counter in 0, it gives the clusters in the dataset
 points= matrix(nrow = length(which(mark!=-1)), ncol = ncol(data), 0) #non-outliers
 min_cluster_size=2
@@ -114,12 +116,12 @@ for (i in (1:num_cluster)) {
 points
 cluster
 
-s3d1=scatterplot3d(points, main="Clusters, eps=25, min points=10",
+s3d1=scatterplot3d(points, main="Clusters, eps=35, min points=10",
                    xlab = "L",
                    ylab = "F",
-                   zlab = "M", pch = 16, color="steelblue")
+                   zlab = "M", pch = 16, color="blue")
 
 
-scatter3d(x=points[,1], y=points[,2], z= points[,3], point.col = "steelblue",
+scatter3d(x=points[,1], y=points[,2], z= points[,3], point.col = "red",
           surface =FALSE, grid =FALSE,
           axis.scales = FALSE, ellipsoid = FALSE)
