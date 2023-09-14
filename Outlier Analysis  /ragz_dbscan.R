@@ -83,7 +83,7 @@ num_cluster
 id_mark= which(mark==-1) #take the indexes of the outliers
 data_mark= data[id_mark,] #select the features by the indexes in the dataset
 
-#################PLOT THE OUTLIERS
+#################PLOT THE OUTLIERS IN 3D
 
 s3d=scatterplot3d(data_mark,
                   main="Outliers, eps=35, min points=10",
@@ -99,7 +99,7 @@ scatter3d(x=data_mark[,1], y=data_mark[,2], z= data_mark[,3],
           surface =FALSE, grid =FALSE,
           axis.scales = FALSE, ellipsoid = FALSE)
 
-#PLOT THE CLUSTER
+#PLOT THE CLUSTER IN 3D
 cluster=0 # initialize the counter in 0, it gives the clusters in the dataset
 points= matrix(nrow = length(which(mark!=-1)), ncol = ncol(data), 0) #non-outliers
 min_cluster_size=2
