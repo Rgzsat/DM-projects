@@ -12,6 +12,9 @@ pop <- function(list, i = length(list)) {
   res
 }
 
+#EXCEL FILE
+#data_p = read_excel("dataset")
+#data= as.matrix(data_p[,2:4])
 
 #TEST AND CREATE YOUR OWN DATASET
 x1= floor(runif(100, min=1, max=121))
