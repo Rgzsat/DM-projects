@@ -2,6 +2,7 @@ library("readxl")
 install.packages("scatterplot3d") # Install
 library("scatterplot3d") # load
 
+#Using excel dataset
 #data_p = read_excel('dataset')
 #data= as.matrix(data_p[,2:4])
 
