@@ -112,8 +112,8 @@ library("rgl")
 
 
 ## Plotting
-scatterplot3d(data_normal, pch = 16, color="blue", main="Non-outliers, LOF>=1.25")
+scatterplot3d(data_normal, pch = 16, color="blue", main="Non-outliers, LOF>=12.5")
 
 
-scatterplot3d(data_outliers, pch = 16, color="red", main="Outliers, LOF>=1.25")
+scatterplot3d(data_outliers, pch = 16, color="red", main="Outliers, LOF>=12.5")
 
