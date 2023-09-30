@@ -1,0 +1,6 @@
+Initially, Principal Component Analysis (PCA) and Correlation
+test are used to achieve feature selection and illustrate
+variance importance based on charging and discharging. Subsequently,
+some techniques for parameter estimation in clustering
+and anomaly detection algorithms are implemented, finally
+the K-Means, DBSCAN and LOF algorithms are executed.
