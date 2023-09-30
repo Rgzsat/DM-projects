@@ -1,0 +1,6 @@
+In this section, some methods to select the optimal parameters
+for the K-Means, DBSCAN and LOF are explained. It is important
+to mention that, several methods were tried, however,
+only those that show satisfactory performance were selected.
+Specifically found in the scientific references [8, 10, 12, 19 and
+20], which were validated by the the academic field.
