@@ -1,0 +1,289 @@
+#############DBSCAN
+library (dbscan)
+kpi_discharge
+dbscan::kNNdistplot((kpi_discharge[,]), k =  4)
+abline(h = 3, lty = 2)
+
+#DISCHARGING
+db_disc= dbscan(as.data.frame(scale(kpi_discharge)),eps=2,minPts = 200) #promising
+fviz_cluster(db_disc, kpi_discharge, stand = FALSE, ellipse = FALSE, geom = "point")
+fviz_cluster(db_disc, data = kpi_discharge, stand = FALSE,
+             ellipse = FALSE, show.clust.cent = FALSE,
+             geom = "point",palette = "jco", ggtheme = theme_classic())
+
+#IDs for outliers and non outliers
+db_disc$cluster
+table(db_disc$cluster)
+db_disc_out=which(db_disc$cluster==0)#outliers
+db_disc_clu=which(db_disc$cluster!=0)#non-outliers (clusters)
+
+#VOLTAGE MEASURED VS CAPACITY 
+#SAMPLE TO PLOT
+
+nc= 500 #Sample for number of clusters
+nou=80 #sample for number of outliers
+
+par(oma=c(0, 0, 0, 5))
+plot(sample(kpi_discharge[db_disc_clu, 'Capacity'], nc, replace = FALSE)
+     ,sample(kpi_discharge[db_disc_clu, 'Voltage_measured']
+             , nc, replace = FALSE),
+     xlim=c(min(kpi_discharge[,'Capacity']),
+            max(kpi_discharge[,'Capacity'])),
+     ylim=c(min(kpi_discharge[, "Voltage_measured"]),
+            max(kpi_discharge[, "Voltage_measured"])),
+     main = 'Voltage vs Capacity,DBSCAN-Discharging',
+     xlab = "Capacity", ylab = "Voltage",
+     pch=19, col="black")
+
+points(sample(kpi_discharge[db_disc_out, 'Capacity'], nou, replace = FALSE),
+       sample(kpi_discharge[db_disc_out, "Voltage_measured"],
+              nou, replace = FALSE),
+       pch=19, col="red")
+#par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+
+
+# this legend gets clipped:
+legend(par('usr')[2], par('usr')[4], bty='n', xpd=NA,
+       c("Outliers", "Clusters"),  pch=c(1, 1), 
+       col = c("red", "black"), lty=c(1,1),  lwd = 3)
+
+#CHARGING
+
+dro=nrow(kpi_discharge)
+kpi_charge[sample(nrow(kpi_charge),size=dro,replace=FALSE),]
+dbscan::kNNdistplot((kpi_charge[sample(nrow(kpi_charge),
+                                       size=dro,replace=FALSE),]), k =  3)
+abline(h = 1.4, lty = 2)
+
+db_ch= dbscan(as.data.frame(scale(kpi_charge[sample(nrow(kpi_charge),
+                                                    size=dro,replace=FALSE),])),
+              eps=1.4,minPts = 200) #promising
+
+fviz_cluster(db_ch, kpi_charge[sample(nrow(kpi_charge),
+                                      size=dro,replace=FALSE),],
+             stand = FALSE, ellipse = FALSE, geom = "point")
+
+fviz_cluster(db_ch, data = kpi_charge[sample(nrow(kpi_charge),
+                                             size=dro,replace=FALSE),],
+             stand = FALSE, ellipse = FALSE, show.clust.cent = FALSE,
+             geom = "point",palette = "jco", ggtheme = theme_classic())
+
+# IDS for outliers and non outliers
+db_ch$cluster
+table(db_ch$cluster)
+db_ch_out=which(db_ch$cluster==0)#outliers
+db_ch_clu=which(db_ch$cluster!=0)#non-outliers (clusters)
+
+#PLOT TEMPERATURE VS TIME
+#par(oma=c(0, 0, 0, 5))
+plot(sample(kpi_charge[db_ch_clu, 'Time'], nc, replace = FALSE)
+     ,sample(kpi_charge[db_ch_clu, 'Temperature_measured']
+             , nc, replace = FALSE),
+     xlim=c(min(kpi_charge[,'Time']),
+            max(kpi_charge[,'Time'])),
+     ylim=c(min(kpi_charge[, "Temperature_measured"]),
+            max(kpi_discharge[, "Temperature_measured"])),
+     main = 'Temperature measured vs Time,DBSCAN-Charging',
+     xlab = "Time", ylab = "Temperature",
+     pch=19, col="black")
+
+points(sample(kpi_charge[db_ch_out, 'Time'], nou, replace = FALSE),
+       sample(kpi_charge[db_ch_out, "Temperature_measured"],
+              nou, replace = FALSE),
+       pch=19, col="red")
+par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+
+
+# this legend gets clipped:
+legend(par('usr')[2], par('usr')[4], bty='n', xpd=NA,
+       c("Outliers", "Clusters"),  pch=c(1, 1), 
+       col = c("red", "black"), lty=c(1,1),  lwd = 3)
+
+#################KMeans
+
+#DISCHARGING
+library(cluster)    # clustering algorithms
+#Elbow method
+
+fviz_nbclust(scale(kpi_discharge[1:20000,]), kmeans, method = "wss") +
+  geom_vline(xintercept = 2, linetype = 2)+
+  labs(subtitle = "Elbow method")
+
+# Silhouette method
+fviz_nbclust(kpi_discharge[1:10000,], kmeans, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+
+#Implementing kmeans
+km_disc=  kmeans(as.data.frame(scale(kpi_discharge)), centers = 2, nstart = 25)
+c_disc <- km_disc$centers[km_disc$cluster, ]
+dist_disc <- sqrt(rowSums((kpi_discharge - c_disc)^2))#vector of distances
+p_disc= (max(dist_disc)+min(dist_disc))/2 #threshold
+km_disc_out= which(dist_disc>p_disc) #ids for outliers
+km_disc_clu=which(dist_disc<=p_disc) #ids for clusters
+fviz_cluster(km_disc, data = kpi_discharge,  geom = "point")
+length(km_disc_out)
+length(km_disc_clu)
+
+#PLOT VOLTAGE VS CAPACITY
+
+par(oma=c(0, 0, 0, 5))
+plot(sample(kpi_discharge[km_disc_clu, "Capacity"], nc, replace = FALSE)
+     ,sample(kpi_discharge[km_disc_clu, "Voltage_measured"]
+             , nc, replace = FALSE),
+     xlim=c(min(kpi_discharge[, "Capacity"]),
+            max(kpi_discharge[, "Capacity"])),
+     ylim=c(min(kpi_discharge[, "Voltage_measured"]),
+            max(kpi_discharge[, "Voltage_measured"])),
+     main = 'Voltage vs Capacity, KMEANS-Discharging',
+     xlab = "Capacity", ylab = "Voltage measured",
+     pch=19, col="black")
+
+points(sample(kpi_discharge[km_disc_out, "Capacity"], nou, replace = FALSE),
+       sample(kpi_discharge[km_disc_out, "Voltage_measured"],
+              nou, replace = FALSE),
+       pch=19, col="red")
+
+#par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+
+
+# this legend gets clipped:
+legend(par('usr')[2], par('usr')[4], bty='n', xpd=NA,
+       c("Outliers", "Clusters"),  pch=c(1, 1), 
+       col = c("red", "black"), lty=c(1,1),  lwd = 3)
+
+
+#CHARGING
+
+fviz_nbclust(scale(kpi_charge[1:20000,]), kmeans, method = "wss") +
+  geom_vline(xintercept = 2, linetype = 2)+
+  labs(subtitle = "Elbow method")
+
+# Silhouette method
+fviz_nbclust(kpi_charge[1:10000,], kmeans, method = "silhouette")+
+  labs(subtitle = "Silhouette method")
+
+#Implementing kmeans
+km_ch=  kmeans(as.data.frame(scale(kpi_charge[sample(nrow(kpi_charge),size=dro,
+                                                     replace=FALSE),])),
+               centers = 2, nstart = 25)
+
+c_ch <- km_ch$centers[km_ch$cluster, ]
+dist_ch <- sqrt(rowSums((kpi_charge[sample(nrow(kpi_charge),size=dro,replace=FALSE),]
+                         - c_ch)^2))#vector of distances
+
+p_ch= (max(dist_ch)+min(dist_ch))/2 #threshold
+km_ch_out= which(dist_ch>p_ch)
+km_ch_clu=which(dist_ch<=p_ch)
+fviz_cluster(km_ch, data =kpi_charge[sample(nrow(kpi_charge),size=dro,
+                                            replace=FALSE),], geom = "point" )
+
+length(km_ch_out)
+length(km_ch_clu)
+
+#PLOT TEMPERATURE VS TIME
+par(oma=c(0, 0, 0, 5))
+
+plot(sample(t_charge[km_ch_clu], nc, replace = FALSE)
+     ,sample(kpi_charge[km_ch_clu, "Temperature_measured"]
+             , nc, replace = FALSE),
+     xlim=c(min(t_charge[km_ch_out]),max(t_charge[km_ch_out])),
+     ylim=c(min(kpi_charge[, "Temperature_measured"]),
+            max(kpi_charge[, "Temperature_measured"])),
+     main = 'Temperature vs Time,KMEANS-Charging',
+     xlab = "Time", ylab = "Temperature measured",
+     pch=19, col="black")
+
+points(sample(t_charge[km_ch_out], nou, replace = FALSE),
+       sample(kpi_charge[km_ch_out, "Temperature_measured"],
+              nou, replace = FALSE),
+       pch=19, col="red")
+
+#par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+
+# this legend gets clipped:
+legend(par('usr')[2], par('usr')[4], bty='n', xpd=NA,
+       c("Outliers", "Clusters"),  pch=c(1, 1), 
+       col = c("red", "black"), lty=c(1,1),  lwd = 3)
+
+
+##################LOF 
+
+#Discharging
+lof_disc= lof(as.data.frame(scale(kpi_discharge)), minPts = 30) #k= minPts, try with 100, or 50
+plot(density(lof_disc))
+q=0.90
+quantile(lof_disc, probs = c(0, q))
+p_lof_disc= quantile(lof_disc, probs = c(0, q))[2]
+lof_disc_out= which(lof_disc>p_lof_disc)
+lof_disc_clu=which(lof_disc<=p_lof_disc)
+
+length(lof_disc_out)
+
+#PLOT VOLTAGE VS CAPACITY
+
+par(oma=c(0, 0, 0, 5))
+#graphics.off()
+plot(sample(kpi_discharge[lof_disc_clu, "Capacity"], nc, replace = FALSE)
+     ,sample(kpi_discharge[lof_disc_clu, "Voltage_measured"]
+             , nc, replace = FALSE),
+     xlim=c(min(kpi_discharge[, "Capacity"]),
+            max(kpi_discharge[, "Capacity"])),
+     ylim=c(min(kpi_discharge[, "Voltage_measured"]),
+            max(kpi_discharge[, "Voltage_measured"])),
+     main = 'Voltage vs Capacity, LOF-Discharging',
+     xlab = "Capacity", ylab = "Voltage measured",
+     pch=19, col="black")
+
+points(sample(kpi_discharge[lof_disc_out, "Capacity"], nou, replace = FALSE),
+       sample(kpi_discharge[lof_disc_out, "Voltage_measured"],
+              nou, replace = FALSE),
+       pch=19, col="red")
+
+#par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+
+
+# this legend gets clipped:
+legend(par('usr')[2], par('usr')[4], bty='n', xpd=NA,
+       c("Outliers", "Clusters"),  pch=c(1, 1), 
+       col = c("red", "black"), lty=c(1,1),  lwd = 3)
+
+####CHARGING
+
+lof_ch= lof(as.data.frame(scale(kpi_charge[sample(nrow(kpi_charge),size=dro,
+                                                  replace=FALSE),])), minPts = 50) #k= minPts
+plot(density(lof_ch))
+q2= 0.97
+quantile(lof_ch, probs = c(0, q2))
+p_lof_ch= quantile(lof_ch, probs = c(0, q2))[2]
+lof_ch_out= which(lof_ch>p_lof_ch)
+lof_ch_clu=which(lof_ch<=p_lof_ch)
+
+length(lof_disc_clu)
+length(lof_disc_out)
+length(lof_ch_out)
+length(lof_ch_clu)
+
+#PLOT TEMPERATURE VS TIME
+par(oma=c(0, 0, 0, 5)) #this is the right one
+
+plot(sample(t_charge[lof_ch_clu], nc, replace = FALSE)
+     ,sample(kpi_charge[lof_ch_clu, "Temperature_measured"]
+             , nc, replace = FALSE),
+     xlim=c(min(t_charge[lof_ch_out]),max(t_charge[lof_ch_out])),
+     ylim=c(min(kpi_charge[, "Temperature_measured"]),
+            max(kpi_charge[, "Temperature_measured"])),
+     main = 'Temperature vs Time,LOF-Charging',
+     xlab = "Time", ylab = "Temperature measured",
+     pch=19, col="black")
+
+points(sample(t_charge[lof_ch_out], nou, replace = FALSE),
+       sample(kpi_charge[lof_ch_out, "Temperature_measured"],
+              nou, replace = FALSE),
+       pch=19, col="red")
+
+#par(mar=c(5.1, 4.1, 4.1, 8.1), xpd=TRUE)
+
+# this legend gets clipped:
+legend(par('usr')[2], par('usr')[4], bty='n', xpd=NA,
+       c("Outliers", "Clusters"),  pch=c(1, 1), 
+       col = c("red", "black"), lty=c(1,1),  lwd = 3)
