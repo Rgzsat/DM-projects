@@ -1,0 +1,6 @@
+K-Means, DBSCAN, and Local Outlier Factor (LOF) algorithms are
+executed to identify Key Performance Indicators (KPIs) and
+their corresponding critical values to assess battery operation.
+Main results indicate that Temperature measured, time cycling,
+Capacity, and Voltage measured are the main indicators
+of battery operation.
