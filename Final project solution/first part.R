@@ -12,7 +12,7 @@ library("rgl")
 
 ##########DATA PREPROCESSING
 
-df = read.csv("C:\\Users\\47406\\Downloads\\battery5_data\\battery5_data.csv")
+df = read.csv("dataset")
 library(dplyr) #using DPLYR
 df_discharge=df[which(df[,'type']=='discharge'),] #
 df_charge= df[which(df[,'type']=='charge'),] #
